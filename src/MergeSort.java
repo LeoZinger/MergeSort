@@ -48,49 +48,60 @@ public class MergeSort {
         int j=0;
         int c=0;
 
-        if(i<m1.length && j<m2.length) {
-            if (m1[i] <= m2[j]) {
+        while(i<m1.length || j<m2.length) {
+            if ( j==m2.length) {
                 m[c] = m1[i];
                 System.out.println("None-empty m1m2 merge:copied subarray 1 item " + " at index" + i + ":" + m1[i] + " into merge array : " + java.util.Arrays.toString(m));
                 c++;
                 i++;
-            } else {
+            }
+            else if(i==m1.length){
+                m[c] = m2[j];
+                System.out.println("None-empty copied subarray 1 item " + " at index" + j + ":" + m2[j] + " into merge array : " + java.util.Arrays.toString(m));
+                c++;
+                j++;
+            }
+            else if (m1[i] <= m2[j]) {
+                m[c] = m1[i];
+                System.out.println("None-empty m1m2 merge:copied subarray 1 item " + " at index" + i + ":" + m1[i] + " into merge array : " + java.util.Arrays.toString(m));
+                c++;
+                i++;
+            }
+            else /*if(m1[i] > m2[j])*/
+            {
                 m[c] = m2[j];
                 System.out.println("None-empty copied subarray 1 item " + " at index" + j + ":" + m2[j] + " into merge array : " + java.util.Arrays.toString(m));
                 c++;
                 j++;
             }
         }
-        else{
-            while (i<m1.length || j<m2.length){
-                if (i==m1.length){ //m1 str empty
-                    if(j==m2.length){//m2 str empty already
-                        System.out.println("m1m2 merge: finished merging, returning merge array : " + java.util.Arrays.toString(s));
-                        return s;
-                    }
-                    else{//copy remainder of the m2 str to m.
-                        m[j]=m2[j];
-                        System.out.println("m1m2 merge: copied subarray 2 item " + " at index" + j + ":" + m2[j] + j + " into merge array : " + java.util.Arrays.toString(m));
-                        j++;
-                    }
-                }
-                else if(j==m2.length){//m2 str empty
-                    if(i==m1.length){//m1 str empty already
-                        System.out.println("m1m2 merge: finished merging sub arrays, returning merge array : " + java.util.Arrays.toString(s));
-                        return m;
-                    }
-                    else{ //copy remainder of the m1 str to m.
-                        m[i]=m1[i];
-                        System.out.println("m1m2 merge:copied subarray 1 item " + " at index" + i + ":" + m1[i] + " into merge array : " + java.util.Arrays.toString(m));
-                        i++;
-                    }
-                    //neither strs are empty yet, merge by copying the smaller char of the two heads
-                }
+
+        /*
+        if (i==m1.length){ //m1 str empty
+            if(j==m2.length){//m2 str empty already
+                System.out.println("m1m2 merge: finished merging, returning merge array : " + java.util.Arrays.toString(s));
+                return s;
+            }
+            else{//copy remainder of the m2 str to m.
+                m[j]=m2[j];
+                System.out.println("m1m2 merge: copied subarray 2 item " + " at index" + j + ":" + m2[j] + j + " into merge array : " + java.util.Arrays.toString(m));
+                j++;
             }
         }
-
+        else if(j==m2.length){//m2 str empty
+            if(i==m1.length){//m1 str empty already
+                System.out.println("m1m2 merge: finished merging sub arrays, returning merge array : " + java.util.Arrays.toString(s));
+                return m;
+            }
+            else{ //copy remainder of the m1 str to m.
+                m[i]=m1[i];
+                System.out.println("m1m2 merge:copied subarray 1 item " + " at index" + i + ":" + m1[i] + " into merge array : " + java.util.Arrays.toString(m));
+                i++;
+            }
+            //neither strs are empty yet, merge by copying the smaller char of the two heads
+        }
+        */
         return m;
-
     }
 
     public static void main(String [] args){
